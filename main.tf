@@ -142,7 +142,7 @@ module "kms" {
 # CREATE DB
 
 module "master" {
-  source = "/../"
+  source = "/modules"
 
   identifier = "${local.name}-master"
 
@@ -176,7 +176,7 @@ module "master" {
 }
 
 module "replica" {
-  source = "/../"
+  source = "/modules"
 
   providers = {
     aws = aws.region2
