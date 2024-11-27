@@ -7,6 +7,8 @@ provider "aws" {
   region = "us-west-1"
 }
 
+data "aws_caller_identity" "current" {}
+
 locals {
   tags = {
     Name               = "Hachathon"
@@ -29,6 +31,7 @@ locals {
   max_allocated_storage = 100
   port                  = 5432
 }
+
 
 #CREATE VPCS and SECURITY GROUPS#
 
