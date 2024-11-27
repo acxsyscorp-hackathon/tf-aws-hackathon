@@ -34,7 +34,7 @@ resource "aws_db_instance" "this" {
 
   engine                   = local.is_replica ? null : var.engine
   engine_version           = var.engine_version
-  engine_lifecycle_support = var.engine_lifecycle_support
+  #engine_lifecycle_support = var.engine_lifecycle_support
   instance_class           = var.instance_class
   allocated_storage        = var.allocated_storage
   storage_type             = var.storage_type
@@ -69,8 +69,8 @@ resource "aws_db_instance" "this" {
   storage_throughput     = var.storage_throughput
   publicly_accessible    = var.publicly_accessible
   ca_cert_identifier     = var.ca_cert_identifier
-  dedicated_log_volume   = var.dedicated_log_volume
-  upgrade_storage_config = var.upgrade_storage_config
+  #dedicated_log_volume   = var.dedicated_log_volume
+  #upgrade_storage_config = var.upgrade_storage_config
 
   allow_major_version_upgrade = var.allow_major_version_upgrade
   auto_minor_version_upgrade  = var.auto_minor_version_upgrade

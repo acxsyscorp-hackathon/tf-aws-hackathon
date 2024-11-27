@@ -142,14 +142,14 @@ module "kms" {
 # CREATE DB
 
 module "master" {
-  source = "./*/**"
+  source = "./modules/db_instance"
 
   identifier = "${local.name}-master"
 
   engine               = local.engine
   engine_version       = local.engine_version
-  family               = local.family
-  major_engine_version = local.major_engine_version
+  #family               = local.family
+  #major_engine_version = local.major_engine_version
   instance_class       = local.instance_class
 
   allocated_storage     = local.allocated_storage
@@ -176,7 +176,7 @@ module "master" {
 }
 
 module "replica" {
-  source = "./*/**"
+  source = "./modules/db_instance"
 
   providers = {
     aws = aws.region2
@@ -189,8 +189,8 @@ module "replica" {
 
   engine               = local.engine
   engine_version       = local.engine_version
-  family               = local.family
-  major_engine_version = local.major_engine_version
+  #family               = local.family
+  #major_engine_version = local.major_engine_version
   instance_class       = local.instance_class
   kms_key_id           = module.kms.key_arn
 
@@ -204,7 +204,7 @@ module "replica" {
   port = local.port
 
   # parameter group for replica is inherited from the source database
-  create_db_parameter_group = false
+  #create_db_parameter_group = false
 
   multi_az               = false
   vpc_security_group_ids = [module.security_group_region2.security_group_id]

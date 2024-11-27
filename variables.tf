@@ -1,7 +1,3 @@
-variable "name" {
-  default = "hackathon-postgres"
-}
-
 variable "primary_region" {
   default = "us-east-1"
 }
