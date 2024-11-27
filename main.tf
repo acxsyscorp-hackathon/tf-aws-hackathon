@@ -1,10 +1,10 @@
 provider "aws" {
-  region = var.primary_region
+  region = "us-east-1"
 }
 
 provider "aws" {
   alias  = "region2"
-  region = var.seconday_region
+  region = "us-west-1"
 }
 
 locals {

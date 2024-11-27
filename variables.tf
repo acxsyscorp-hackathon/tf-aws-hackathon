@@ -2,10 +2,10 @@ variable "name" {
   default = "hackathon-postgres"
 }
 
-variable "primaryRegion" {
+variable "primary_region" {
   default = "us-east-1"
 }
 
-variable "secondayRegion" {
+variable "seconday_region" {
   default = "us-west-1"
 }
