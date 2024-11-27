@@ -30,12 +30,7 @@ locals {
     port                  = 5432
 }
 
-
-data "aws_caller_identity" "current" {}
-data "aws_availability_zones" "available" {}
-
-
-#CREATE VPC#
+#CREATE VPCS and SECURITY GROUPS#
 
 module "vpc_region1" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -125,3 +120,6 @@ module "security_group_region2" {
 
   tags = local.tags
 }
+
+# CREATE DB
+
