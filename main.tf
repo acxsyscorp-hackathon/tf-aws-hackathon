@@ -8,26 +8,26 @@ provider "aws" {
 }
 
 locals {
-    tags = {
-        Name               = "Hachathon"
-        project            = "Hackathon Test"
-        environment        = "shared services"
-        WorkloadName       = "Hackathon"
-        DataClassification = "General"
-        Criticality        = "SUPER HIGH"
-        OpsCommitment      = "Platform operations"
-        OpsTeam            = "Cloud Operations"
-        ManagedBy          = "Terraform"
-    }
-    name                  = "hackathon-postgres"
-    engine                = "postgres"
-    engine_version        = "14"
-    family                = "postgres14" # DB parameter group
-    major_engine_version  = "14"         # DB option group
-    instance_class        = "db.t4g.large"
-    allocated_storage     = 20
-    max_allocated_storage = 100
-    port                  = 5432
+  tags = {
+    Name               = "Hachathon"
+    project            = "Hackathon Test"
+    environment        = "shared services"
+    WorkloadName       = "Hackathon"
+    DataClassification = "General"
+    Criticality        = "SUPER HIGH"
+    OpsCommitment      = "Platform operations"
+    OpsTeam            = "Cloud Operations"
+    ManagedBy          = "Terraform"
+  }
+  name                  = "hackathon-postgres"
+  engine                = "postgres"
+  engine_version        = "14"
+  family                = "postgres14" # DB parameter group
+  major_engine_version  = "14"         # DB option group
+  instance_class        = "db.t4g.large"
+  allocated_storage     = 20
+  max_allocated_storage = 100
+  port                  = 5432
 }
 
 #CREATE VPCS and SECURITY GROUPS#
@@ -142,7 +142,7 @@ module "kms" {
 # CREATE DB
 
 module "master" {
-  source = "./modules"
+  source = "modules"
 
   identifier = "${local.name}-master"
 
@@ -176,7 +176,7 @@ module "master" {
 }
 
 module "replica" {
-  source = "./modules"
+  source = "modules"
 
   providers = {
     aws = aws.region2
