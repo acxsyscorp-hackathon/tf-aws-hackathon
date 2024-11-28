@@ -223,3 +223,16 @@ resource "aws_secretsmanager_secret_rotation" "this" {
     schedule_expression      = var.master_user_password_rotation_schedule_expression
   }
 }
+
+# Run the SQL script after DB instance creation
+resource "null_resource" "db_setup" {
+  count = !local.is_replica ? 1 : 0
+  depends_on = [aws_db_instance.this]
+
+  provisioner "local-exec" {
+    command = "psql -h ${aws_db_instance.this.endpoint} -U ${var.username} -d ${var.db_name} -f ./db_setup.sql"
+    environment = {
+      PGPASSWORD = var.password
+    }
+  }
+}
