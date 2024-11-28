@@ -179,8 +179,8 @@ module "master" {
 }
 
 module "replica" {
-  source = "./modules/db_instance"
-
+  source = "./modules/terraform-azurerm-postgres"
+  
   providers = {
     aws = aws.region2
   }
