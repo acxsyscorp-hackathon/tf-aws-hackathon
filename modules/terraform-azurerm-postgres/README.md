@@ -1,4 +1,4 @@
-# aws_db_instance
+# terraform-azurerm-postgres
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
