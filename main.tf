@@ -145,7 +145,7 @@ module "kms" {
 # CREATE DB
 
 module "master" {
-  source = "./modules/db_instance"
+  source = "./modules/terraform-azurerm-postgres"
 
   identifier = "${local.name}-master"
 
