@@ -227,7 +227,7 @@ resource "aws_secretsmanager_secret_rotation" "this" {
 # Run the SQL script after DB instance creation
 resource "null_resource" "db_setup" {
   count = !local.is_replica ? 1 : 0
-  depends_on = [aws_db_instance.this[0]]
+  #depends_on = [aws_db_instance.this[0]]
 
   provisioner "local-exec" {
     command = "psql -h ${aws_db_instance.this[0].endpoint} -U ${var.username} -d ${var.db_name} -f ./db_setup.sql"
