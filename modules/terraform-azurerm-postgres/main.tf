@@ -230,7 +230,7 @@ resource "null_resource" "db_setup" {
   depends_on = [aws_db_instance.this[0]]
 
   provisioner "local-exec" {
-    command = "psql -h ${aws_db_instance.this.endpoint} -U ${var.username} -d ${var.db_name} -f ./db_setup.sql"
+    command = "psql -h ${aws_db_instance.this[0].endpoint} -U ${var.username} -d ${var.db_name} -f ./db_setup.sql"
     environment = {
       PGPASSWORD = var.password
     }
